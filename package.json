@@ -1,0 +1,25 @@
+{
+  "name": "clup",
+  "version": "0.0.1",
+  "description": "Cloudinary utility to cache image metadata locally as a json database",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davegardner/Clup.git"
+  },
+  "keywords": [
+    "cloudinary",
+    "nodejs",
+    "image",
+    "metadata"
+  ],
+  "author": "Dave Gardner",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/davegardner/Clup/issues"
+  },
+  "homepage": "https://github.com/davegardner/Clup#readme"
+}
