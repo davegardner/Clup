@@ -4,7 +4,8 @@
   "description": "Cloudinary utility to cache image metadata locally as a json database",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "run": "index.js"
   },
   "repository": {
     "type": "git",
@@ -21,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/davegardner/Clup/issues"
   },
-  "homepage": "https://github.com/davegardner/Clup#readme"
+  "homepage": "https://github.com/davegardner/Clup#readme",
+  "dependencies": {
+    "command-line-args": "^5.1.1"
+  }
 }
