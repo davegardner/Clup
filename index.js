@@ -1,44 +1,42 @@
-// Commandline interface to sidecar
+// Commandline interface to clup
 const cla = require("command-line-args")
 const clup = require('./clup.js')
+const help = require("./help.js")
 
 // some default values
-const defaultExclusions = ['.git', '_site', 'node_modules', 'photoswipe', 'src', '.vscode']
-const defaultIncludes = ['.jpg', '.jpeg']
-
+const defaultPrefix = 'Slog/Media'
+const defaultType = 'upload'
+const defaultFilename = './_data/cloudinaryResources.json'
 // command line defn
 const optionDefinitions = [
-    { name: 'verbose', alias: 'v', type: Boolean },
-    { name: 'root', type: String, multiple: false, defaultOption: true, defaultValue: '.' },
-    { name: "excludeDirs", alias: 'x', type: String, multiple: true, defaultValue: defaultExclusions },
-    { name: "includeExts", alias: 'i', type: String, multiple: true, defaultValue: defaultIncludes },
-    { name: "overwrite", alias: 'o', type: Boolean, defaultValue: false},
-    { name: "overwriteOnlyIfEmpty", alias: 'e', type: Boolean, defaultValue: true}, // only applies if overwrite is false
-    { name: "dryRun", alias: 'd', type: Boolean, defaultValue: false},
-    { name: "sidecarExt", alias: 's', type:String, defaultValue: ".sqip.json"}
+    { name: 'verbose', alias: 'v', type: Boolean, defaultValue: false },
+    { name: 'prefix', alias: 'p', type: String, defaultValue: defaultPrefix },
+    { name: 'output', type: String, defaultValue: defaultFilename, defaultOption: true },
+    { name: "dryRun", alias: 'd', type: Boolean, defaultValue: false },
+    { name: "type", alias: 't', type: String, defaultValue: defaultType },
+    { name: "help", alias: 'h', type: Boolean }
 ]
 
 // process the commandline
 const options = cla(optionDefinitions)
 
-// show what we're going to do
-console.log(`clup:`)
-// console.log(`   src: ${options.src}`)
-console.log(`   verbose: ${options.verbose}`)
-console.log(`   root: ${options.root}`)
-console.log(`   excludeDirs: ${options.excludeDirs}`)
-console.log(`   includeExts: ${options.includeExts}`)
-console.log(`   overwrite: ${options.overwrite}`)
-console.log(`   overwriteOnlyIfEmpty: ${options.overwriteOnlyIfEmpty}`)
-console.log(`   dryRun: ${options.dryRun}`)
-console.log(`   sidecarExt: ${options.sidecarExt}`)
+if (options.help) {
+    help.display();
+}
+else {
+    // show what we're going to do
+    console.log(`clup:`)
+    console.log(`   prefix: ${options.prefix}`)
+    console.log(`   verbose: ${options.verbose}`)
+    console.log(`   output: ${options.output}`)
+    console.log(`   type: ${options.type}`)
+    console.log(`   dryRun: ${options.dryRun}`)
 
-const startTime = new Date()
+    // do it
+    clup.buildDb(options)
 
-clup.buildDb(options)
+}
 
-const elapsed = (new Date() - startTime) / 1000
 
-console.log(`Clup finished in ${elapsed} seconds`)
 
 

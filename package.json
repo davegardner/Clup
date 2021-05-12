@@ -24,6 +24,8 @@
   },
   "homepage": "https://github.com/davegardner/Clup#readme",
   "dependencies": {
-    "command-line-args": "^5.1.1"
+    "cloudinary": "^1.25.1",
+    "command-line-args": "^5.1.1",
+    "command-line-usage": "^6.1.1"
   }
 }
