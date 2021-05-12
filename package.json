@@ -1,6 +1,6 @@
 {
   "name": "clup",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Cloudinary utility to cache image metadata locally as a json database",
   "main": "index.js",
   "scripts": {
